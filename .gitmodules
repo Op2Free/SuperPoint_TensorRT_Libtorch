@@ -1,0 +1,6 @@
+[submodule "libs/tensorrt-cpp-api"]
+	path = libs/tensorrt-cpp-api
+	url = https://github.com/cyrusbehr/tensorrt-cpp-api.git
+[submodule "scripts/SuperPointPretrainedNetwork"]
+	path = scripts/SuperPointPretrainedNetwork
+	url = https://github.com/magicleap/SuperPointPretrainedNetwork.git

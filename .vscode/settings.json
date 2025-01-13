@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "chrono": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "string": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "*.tcc": "cpp",
+        "stdexcept": "cpp"
+    }
+}
