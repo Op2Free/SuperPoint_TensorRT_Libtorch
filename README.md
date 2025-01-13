@@ -11,6 +11,8 @@ This project is a C++ version of [SuperPoint](https://github.com/magicleap/Super
 ## Getting Started
 This project is well tested on Ubuntu20.04, CUDA 11.7, cudnn 8. 
 
+`git clone --recursive https://github.com/Junchong-Huang/SuperPoint_TensorRT_Libtorch.git`
+
 ### Prerequisites
 - This project makes use of [tensorrt-cpp-api](https://github.com/cyrusbehr/tensorrt-cpp-api.git) to run TensorRT inference. It has been included in `libs` . Following the prerequisites in [tensorrt-cpp-api](https://github.com/cyrusbehr/tensorrt-cpp-api.git), suitable CUDA, cudnn, OpenCV, TensorRT should be ready.
 - [Libtorch](https://pytorch.org/cppdocs/installing.html). Version 1.13 is tested. Installing usually involves unzipping the file only.
