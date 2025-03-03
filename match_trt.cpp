@@ -11,9 +11,9 @@ int main(int argc, char *argv[]) {
     spdlog::level::level_enum logLevel = toSpdlogLevel(logLevelStr);
     spdlog::set_level(logLevel);
 
-    if(argc != 2)
+    if(argc != 4)
     {
-        std::cerr << std::endl << "Usage: ./match_trt path_to_trtModel[.onnx or .engine]" << std::endl;
+        std::cerr << std::endl << "Usage: ./match_trt path_to_trtModel[.onnx or .engine] height width" << std::endl;
         return 1;
     }
     
@@ -39,6 +39,9 @@ int main(int argc, char *argv[]) {
         spdlog::error(msg);
         throw std::runtime_error(msg);
     }
+
+    cv::resize(img1, img1, {std::atoi(argv[3]), std::atoi(argv[2])});
+    cv::resize(img2, img2, {std::atoi(argv[3]), std::atoi(argv[2])});
 
     torch::Tensor pts1, pts2;
     torch::Tensor desc1, desc2;

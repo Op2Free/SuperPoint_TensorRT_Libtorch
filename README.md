@@ -11,7 +11,7 @@ This project is a C++ version of [SuperPoint](https://github.com/magicleap/Super
 ## Getting Started
 This project is well tested on Ubuntu20.04, CUDA 11.7, cudnn 8. 
 
-`git clone --recursive https://github.com/Junchong-Huang/SuperPoint_TensorRT_Libtorch.git`
+`git clone --recursive https://github.com/Op2Free/SuperPoint_TensorRT_Libtorch.git`
 
 ### Prerequisites
 - This project makes use of [tensorrt-cpp-api](https://github.com/cyrusbehr/tensorrt-cpp-api.git) to run TensorRT inference. It has been included in `libs` . Following the prerequisites in [tensorrt-cpp-api](https://github.com/cyrusbehr/tensorrt-cpp-api.git), suitable CUDA, cudnn, OpenCV, TensorRT should be ready.
@@ -38,8 +38,8 @@ Since [tensorrt-cpp-api](https://github.com/cyrusbehr/tensorrt-cpp-api.git) only
 ### Running the Executable
 - `cd build`
 - Benchmarking Libtorch and TensorRT `./benchmark ../weights/superpoint.onnx ../weights/superpoint.pt`
-- Matching with TensorRT `./match_trt ../weights/superpoint.onnx`
-- Matching with Libtorch `./match_torch ../weights/superpoint.pt`. Use `SuperPointNet` (define your own forward function) or `torch::jit::script::Module` (direct convertion) in `TorchFrontend<T>`.
+- Matching with TensorRT `./match_trt ../weights/superpoint.onnx 480 640`
+- Matching with Libtorch `./match_torch ../weights/superpoint.pt 480 640`. Use `SuperPointNet` (define your own forward function) or `torch::jit::script::Module` (direct convertion) in `TorchFrontend<T>`.
 
 ### Benchmarks
 Benchmarks run on GeForceMX450, without taking post processing into accout.

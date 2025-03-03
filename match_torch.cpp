@@ -13,9 +13,9 @@ int main(int argc, const char *argv[])
     spdlog::level::level_enum logLevel = toSpdlogLevel(logLevelStr);
     spdlog::set_level(logLevel);
 
-    if(argc != 2)
+    if(argc != 4)
     {
-        std::cerr << std::endl << "Usage: ./match_torch path_to_torchModel[.pt]" << std::endl;
+        std::cerr << std::endl << "Usage: ./match_torch path_to_torchModel[.pt] height width" << std::endl;
         return 1;
     }
     
@@ -42,6 +42,9 @@ int main(int argc, const char *argv[])
         spdlog::error(msg);
         throw std::runtime_error(msg);
     }
+
+    cv::resize(img1, img1, {std::atoi(argv[3]), std::atoi(argv[2])});
+    cv::resize(img2, img2, {std::atoi(argv[3]), std::atoi(argv[2])});
     
     cv::Mat gray1, gray2;
     cv::cvtColor(img1, gray1, cv::COLOR_BGR2GRAY);

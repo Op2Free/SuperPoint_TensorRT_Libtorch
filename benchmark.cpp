@@ -180,6 +180,7 @@ int main(int argc, char *argv[]) {
     }
     cv::Mat gray;
     cv::cvtColor(img, gray, cv::COLOR_BGR2GRAY);
+    cv::resize(gray, gray, cv::Size(inputDims[0].d[2],inputDims[0].d[1]));
     gray.convertTo(gray, CV_32F, 1.0f/255.0f);
 
     int H = gray.rows;

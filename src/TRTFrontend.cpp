@@ -103,9 +103,15 @@ void TRTFrontend::run(const cv::Mat& cpuImg, torch::Tensor& pts, torch::Tensor& 
         //            cv::cuda::resize(img, resized, cv::Size(inputDim.d[2],
         //            inputDim.d[1])); // TRT dims are (height, width) whereas
         //            OpenCV is (width, height)
-        cv::cuda::GpuMat resized;
-        cv::cuda::resize(img, resized, cv::Size(inputDim.d[2],inputDim.d[1]));
-        input.emplace_back(std::move(resized));
+        if (img.channels() != inputDim.d[0] || img.rows != inputDim.d[1] || img.cols != inputDim.d[2]) {
+            spdlog::error("===== Error =====");
+            spdlog::error("Input does not have correct size!");
+            spdlog::error("Expected: ({}, {}, {})", inputDim.d[0], inputDim.d[1], inputDim.d[2]);
+            spdlog::error("Got: ({}, {}, {})", img.channels(), img.rows, img.cols);
+            spdlog::error("Ensure you resize your input image to the correct size");
+            throw std::runtime_error("The input image size does not match TensorRT model.");
+        }
+        input.emplace_back(std::move(img));
         
         inputs.emplace_back(std::move(input));
     }
